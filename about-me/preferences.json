@@ -1,0 +1,10 @@
+{
+  "targetMarginPct": 30,
+  "platformFeeOverridesPct": {
+    "ebay": 13.25,
+    "depop": 10,
+    "mercari": 10,
+    "facebook_marketplace": 5,
+    "poshmark": 20
+  }
+}

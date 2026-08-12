@@ -1,0 +1,30 @@
+{
+  "name": "resale-mcp-command-center",
+  "version": "1.0.0",
+  "description": "Local MCP server and background daemon bridging a SQLite inventory/stock database to Claude Cowork / Claude Desktop.",
+  "type": "module",
+  "main": "dist/mcp-server/index.js",
+  "bin": {
+    "resale-mcp-server": "dist/mcp-server/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/mcp-server/index.js",
+    "start:daemon": "node dist/daemon/daemon.js",
+    "install-daemon": "npm run build && node dist/daemon/installer.js",
+    "dev": "tsx src/mcp-server/index.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.9.0",
+    "better-sqlite3": "^11.9.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.13.10",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
