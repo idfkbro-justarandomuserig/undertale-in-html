@@ -2,7 +2,7 @@
   "_comment": "Copy this file to integrations.json (gitignored) and fill in your own credentials. Never commit integrations.json.",
 
   "web": {
-    "pin": "CHANGE-ME-4-DIGIT-PIN",
+    "pin": "803012",
     "port": 4173
   },
 
