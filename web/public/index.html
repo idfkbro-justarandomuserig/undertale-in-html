@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Resale Command Center</title>
+<meta name="theme-color" content="#0f172a" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="apple-touch-icon" href="/icons/icon-192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+<div id="login-screen" class="login-screen">
+  <div class="login-card">
+    <h1>Resale Command Center</h1>
+    <p class="muted">Enter your PIN to continue</p>
+    <form id="login-form">
+      <input id="pin-input" type="password" inputmode="numeric" autocomplete="off" placeholder="PIN" />
+      <button type="submit">Unlock</button>
+    </form>
+    <p id="login-error" class="error hidden"></p>
+  </div>
+</div>
+
+<div id="app" class="app hidden">
+  <header class="topbar">
+    <h1>Resale Command Center</h1>
+    <button id="logout-btn" class="ghost-btn" title="Log out">⎋</button>
+  </header>
+
+  <main id="content" class="content">
+
+    <section id="view-dashboard" class="view">
+      <div class="card-grid" id="summary-cards"></div>
+      <h2>Recent shipments</h2>
+      <div id="recent-shipments" class="list"></div>
+    </section>
+
+    <section id="view-inventory" class="view hidden">
+      <div class="toolbar">
+        <select id="filter-status">
+          <option value="">All statuses</option>
+          <option value="active">Active</option>
+          <option value="sold">Sold</option>
+          <option value="delisted">Delisted</option>
+        </select>
+        <select id="filter-platform">
+          <option value="">All platforms</option>
+          <option value="ebay">eBay</option>
+          <option value="depop">Depop</option>
+          <option value="mercari">Mercari</option>
+          <option value="facebook_marketplace">Facebook Marketplace</option>
+          <option value="poshmark">Poshmark</option>
+        </select>
+        <button id="add-item-btn" class="primary-btn">+ Add item</button>
+      </div>
+
+      <div id="bulk-actions" class="toolbar hidden">
+        <span id="selected-count" class="muted"></span>
+        <button data-action="mark_sold" class="chip-btn">Mark sold</button>
+        <button data-action="delist" class="chip-btn">Delist</button>
+        <button data-action="update_price" class="chip-btn">Change price</button>
+      </div>
+
+      <div id="inventory-list" class="list"></div>
+    </section>
+
+    <section id="view-stocks" class="view hidden">
+      <div class="toolbar">
+        <button id="add-stock-btn" class="primary-btn">+ Add / update holding</button>
+      </div>
+      <div class="card-grid" id="stock-summary"></div>
+      <div id="stock-list" class="list"></div>
+    </section>
+
+    <section id="view-shipping" class="view hidden">
+      <div class="card">
+        <h2>Paste a shipping notification</h2>
+        <textarea id="shipping-text" rows="5" placeholder="Paste the raw email/text notification here..."></textarea>
+        <input id="shipping-sku" type="text" placeholder="SKU (optional, to link to an item)" />
+        <button id="shipping-ingest-btn" class="primary-btn">Parse & save</button>
+      </div>
+
+      <div class="card">
+        <h2>Auto-import</h2>
+        <div class="integration-row">
+          <div>
+            <strong>eBay</strong>
+            <div id="ebay-status" class="muted">checking...</div>
+          </div>
+          <button id="ebay-connect-btn" class="chip-btn">Connect</button>
+          <button id="ebay-sync-btn" class="chip-btn hidden">Sync now</button>
+        </div>
+        <div class="integration-row">
+          <div>
+            <strong>Gmail</strong>
+            <div id="gmail-status" class="muted">checking...</div>
+          </div>
+          <button id="gmail-connect-btn" class="chip-btn">Connect</button>
+          <button id="gmail-sync-btn" class="chip-btn hidden">Sync now</button>
+        </div>
+      </div>
+
+      <h2>Recent shipments</h2>
+      <div id="shipping-list" class="list"></div>
+    </section>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-view="dashboard">🏠<span>Home</span></button>
+    <button class="nav-btn" data-view="inventory">📦<span>Inventory</span></button>
+    <button class="nav-btn" data-view="stocks">📈<span>Stocks</span></button>
+    <button class="nav-btn" data-view="shipping">🚚<span>Shipping</span></button>
+  </nav>
+</div>
+
+<div id="modal-backdrop" class="modal-backdrop hidden">
+  <div id="modal" class="modal"></div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>

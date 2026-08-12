@@ -1,0 +1,268 @@
+:root {
+  --bg: #0b1120;
+  --surface: #131c31;
+  --surface-2: #1b2740;
+  --text: #e9edf5;
+  --muted: #8f9bb3;
+  --accent: #4f8cff;
+  --good: #35c07a;
+  --bad: #ef5a6f;
+  --border: #253251;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hidden { display: none !important; }
+
+h1 { font-size: 1.15rem; margin: 0; }
+h2 { font-size: 1rem; margin: 1.2rem 0 0.5rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+input, select, textarea {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.65rem 0.8rem;
+  width: 100%;
+  margin-bottom: 0.6rem;
+}
+
+textarea { resize: vertical; }
+
+button { cursor: pointer; }
+
+.primary-btn {
+  background: var(--accent);
+  border: none;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.ghost-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 1.2rem;
+  padding: 0.3rem 0.6rem;
+}
+
+.chip-btn {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.chip-btn.active { background: var(--accent); border-color: var(--accent); }
+
+/* Login */
+.login-screen {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.login-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+}
+.login-card input { text-align: center; letter-spacing: 0.3em; font-size: 1.2rem; }
+.login-card button { width: 100%; margin-top: 0.4rem; }
+.error { color: var(--bad); font-size: 0.9rem; }
+.muted { color: var(--muted); font-size: 0.85rem; }
+
+/* App shell */
+.app {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1rem;
+  padding-top: max(0.9rem, env(safe-area-inset-top));
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 5;
+}
+
+.content {
+  flex: 1;
+  padding: 1rem;
+  padding-bottom: 5.5rem;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 10;
+}
+
+.nav-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.6rem 0;
+  font-size: 1.2rem;
+}
+.nav-btn span { font-size: 0.7rem; }
+.nav-btn.active { color: var(--accent); }
+
+/* Cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.9rem;
+}
+.stat-card .label { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.stat-card .value { font-size: 1.3rem; font-weight: 700; margin-top: 0.2rem; }
+.stat-card .value.good { color: var(--good); }
+.stat-card .value.bad { color: var(--bad); }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.list { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.item-row {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.8rem;
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+}
+
+.item-row input[type="checkbox"] { width: auto; margin: 0.2rem 0 0 0; }
+
+.item-row .body { flex: 1; min-width: 0; }
+.item-row .title { font-weight: 600; }
+.item-row .meta { color: var(--muted); font-size: 0.8rem; margin-top: 0.15rem; }
+.item-row .profit { font-weight: 700; margin-top: 0.3rem; }
+.item-row .profit.good { color: var(--good); }
+.item-row .profit.bad { color: var(--bad); }
+
+.badge {
+  display: inline-block;
+  background: var(--surface-2);
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-right: 0.3rem;
+}
+
+.toolbar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+.toolbar select { width: auto; margin-bottom: 0; flex: 1; min-width: 120px; }
+.toolbar .primary-btn { margin-left: auto; white-space: nowrap; }
+
+.integration-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.integration-row:last-child { border-bottom: none; }
+.integration-row > div:first-child { flex: 1; }
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: flex-end;
+  z-index: 50;
+}
+.modal {
+  background: var(--surface);
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: 1.2rem;
+  width: 100%;
+  max-height: 85dvh;
+  overflow-y: auto;
+  padding-bottom: max(1.2rem, env(safe-area-inset-bottom));
+}
+.modal h2 { margin-top: 0; }
+.modal .row { display: flex; gap: 0.5rem; }
+.modal .row > * { flex: 1; }
+.modal-actions { display: flex; gap: 0.6rem; margin-top: 0.8rem; }
+.modal-actions button { flex: 1; }
+.secondary-btn {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+}
+
+@media (min-width: 720px) {
+  .bottom-nav { display: none; }
+  .content { padding-bottom: 1rem; }
+  .app { flex-direction: row; }
+  .topbar { display: none; }
+}

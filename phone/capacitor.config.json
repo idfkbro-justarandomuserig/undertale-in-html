@@ -1,0 +1,12 @@
+{
+  "appId": "com.resale.dashboard",
+  "appName": "Resale Dashboard",
+  "webDir": "www",
+  "server": {
+    "url": "http://CHANGE-ME.tailnet-name.ts.net:4173",
+    "cleartext": true
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}

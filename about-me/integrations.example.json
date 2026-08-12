@@ -1,0 +1,24 @@
+{
+  "_comment": "Copy this file to integrations.json (gitignored) and fill in your own credentials. Never commit integrations.json.",
+
+  "web": {
+    "pin": "CHANGE-ME-4-DIGIT-PIN",
+    "port": 4173
+  },
+
+  "ebay": {
+    "_howToGet": "developer.ebay.com -> sign in -> Application Keys. Create a 'production' keyset. redirectUri must match a RuName you configure there (or use their auth accepted URL flow).",
+    "clientId": "",
+    "clientSecret": "",
+    "redirectUri": "http://localhost:4173/api/ebay/callback",
+    "environment": "production"
+  },
+
+  "gmail": {
+    "_howToGet": "console.cloud.google.com -> new project -> enable 'Gmail API' -> OAuth consent screen (External, Testing mode is fine for personal use) -> Credentials -> OAuth Client ID -> type 'Web application' -> add redirectUri below as an authorized redirect URI.",
+    "clientId": "",
+    "clientSecret": "",
+    "redirectUri": "http://localhost:4173/api/gmail/callback",
+    "pollIntervalMinutes": 10
+  }
+}
